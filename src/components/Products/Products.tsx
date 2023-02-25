@@ -1,23 +1,19 @@
-import React from "react";
-import { Button, Card } from "react-bootstrap";
-
+import { Container, Spinner } from "react-bootstrap";
 import { IProd } from "../../models";
+import Product from "../Product/Product";
 
 interface ProdProps {
-  prod: IProd;
+  prod: IProd[];
+  loading: boolean;
 }
 
-export default function Products({ prod }: ProdProps) {
+export default function Products({ prod, loading }: ProdProps) {
   return (
-    <Card className="col-3">
-      <Card.Img variant="top" src={prod.images[0]} className="thumbnail" />
-      <Card.Body>
-        <Card.Title>{prod.title}</Card.Title>
-        <Card.Title>{prod.rating}</Card.Title>
-        <Card.Text>{prod.description}</Card.Text>
-        <Card.Title>{prod.price}$</Card.Title>
-        <Button variant="primary">add to cart</Button>
-      </Card.Body>
-    </Card>
+    <Container className="d-flex flex-wrap ">
+      {loading && <Spinner animation="border" />}
+      {prod.map((item) => (
+        <Product prod={item} key={item.id} />
+      ))}
+    </Container>
   );
 }

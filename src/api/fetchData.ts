@@ -1,10 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { IData, IProd } from '../models'
+import { IData } from '../models'
 
 
 export  function useFetchData() {
-    const [prod, setProd]= useState<IData>()
+    const [prod, setProd]= useState<IData>({
+        limit: 0,
+        products: [],
+        skip: 0,
+        total: 0
+    })
     const [loading, setLoading] = useState(false)
 
     async function fetchData() {

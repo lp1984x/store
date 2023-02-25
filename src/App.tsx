@@ -1,4 +1,3 @@
-import { useFetchData } from "./api/fetchData";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import NavBar from "./components/Navbar/Navbar";
