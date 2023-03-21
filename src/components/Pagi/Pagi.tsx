@@ -33,5 +33,5 @@ export default function Pagi({ total, current, onChangePage }: IPagi) {
     );
   }
 
-  return <Pagination>{items}</Pagination>;
+  return <Pagination className="mt-3">{items}</Pagination>;
 }
