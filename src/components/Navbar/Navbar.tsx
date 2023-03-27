@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import CartIcon from "../Cart/CartIcon";
 
 export default function NavBar() {
   return (
@@ -13,7 +14,7 @@ export default function NavBar() {
             <Nav.Link href="#link">About</Nav.Link>
           </Nav>
 
-          <Button variant="outline-secondary">cart</Button>
+          <CartIcon />
         </Navbar.Collapse>
       </Container>
     </Navbar>

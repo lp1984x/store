@@ -30,7 +30,7 @@ export default function Products() {
         ))}
       </Container>
 
-      {perPage < prod.length && (
+      {perPage < prodF.length && (
         <Pagi total={total} current={current} onChangePage={onChangePage} />
       )}
     </>
