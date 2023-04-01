@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 
 import { IProd } from "../../models";
 import { addToCart } from "../../store/features/cartSlice";
-import { useAppDispatch, useAppSelector } from "../../store/store";
+import { useAppDispatch } from "../../store/store";
 
 interface ProdProps {
   prd: IProd;
@@ -11,7 +11,6 @@ interface ProdProps {
 
 export default function Product({ prd }: ProdProps) {
   const dispatch = useAppDispatch();
-  const filling = useAppSelector((state) => state.cart.cartFilling);
   return (
     <Card className="col-3 m-3">
       <Card.Img variant="top" src={prd.images[0]} className="thumbnail" />

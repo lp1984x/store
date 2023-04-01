@@ -10,6 +10,8 @@ export interface IProd {
     thumbnail:string,
     title:string
     price:number,
+    cartQuantity?:number
+    tempPrice?:number
  }
 
  export interface IData {

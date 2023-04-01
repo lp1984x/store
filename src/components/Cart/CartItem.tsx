@@ -3,7 +3,12 @@ import { IProd } from "../../models";
 import * as icon from "react-bootstrap-icons";
 import "./cartItem.scss";
 import { useAppDispatch } from "../../store/store";
-import { delFromCart } from "../../store/features/cartSlice";
+import {
+  decrementQuantity,
+  delFromCart,
+  incrementQuantity,
+} from "../../store/features/cartSlice";
+import { Button, ButtonGroup, CloseButton } from "react-bootstrap";
 
 interface CartProps {
   prd: IProd;
@@ -11,28 +16,38 @@ interface CartProps {
 
 export default function CartItem({ prd }: CartProps) {
   const dispatch = useAppDispatch();
+
   return (
-    <div className="card mb-2 border-0">
-      <div className="row g-0">
-        <div className="col-2">
-          <img
-            src={prd.images[0]}
-            className="img-fluid w-100 h-100"
-            alt="card-horizontal"
-          />
-        </div>
-        <div className="col-9">
-          <div className="card-body">
-            <h5 className="card-title text-center">{prd.title}</h5>
+    <tr className="text-center align-middle">
+      <td className="">
+        <CloseButton
+          className="m-1 float-start align-middle"
+          onClick={() => dispatch(delFromCart(prd))}
+        />
+        <img src={prd.images[0]} className="float-start w-25" alt="card" />
+        <div>{prd.title}</div>
+      </td>
+      <td>
+        <ButtonGroup aria-label="Basic example" size="sm">
+          <Button
+            variant="outline-light"
+            onClick={() => dispatch(decrementQuantity(prd))}
+          >
+            -
+          </Button>
+          <div className="d-flex align-items-center m-1">
+            {prd.cartQuantity}
           </div>
-        </div>
-        <div className="col-1 d-flex justify-content-center align-items-center">
-          <icon.FileExcel
-            className="x"
-            onClick={() => dispatch(delFromCart(prd))}
-          />
-        </div>
-      </div>
-    </div>
+
+          <Button
+            variant="outline-light"
+            onClick={() => dispatch(incrementQuantity(prd))}
+          >
+            +
+          </Button>
+        </ButtonGroup>
+      </td>
+      <td>{prd.tempPrice}$</td>
+    </tr>
   );
 }
