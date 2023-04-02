@@ -10,29 +10,29 @@ export default function Products() {
   const [current, setCurrent] = useState(1);
   const [perPage] = useState(6);
   const { loading, prod } = useFetchData();
-  const prodF =
+  const prodCat =
     catF.trim().length > 0
       ? prod.filter((item) => item.category === catF)
       : prod;
   const lastIndex = current * perPage;
   const firstIndex = lastIndex - perPage;
-  const currentProds = prodF.slice(firstIndex, lastIndex);
-  const total = Math.ceil(prodF.length / perPage);
+  const currentProds = prodCat.slice(firstIndex, lastIndex);
+  const total = Math.ceil(prodCat.length / perPage);
 
   const onChangePage = (page: number) => setCurrent(page);
 
   return (
     <>
-      <Container className="d-flex flex-wrap border">
+      <Container className="d-flex flex-wrap justify-content-center p-0 col-10">
         {loading && <Spinner animation="border" />}
         {currentProds.map((item) => (
           <Product prd={item} key={item.id} />
         ))}
-      </Container>
 
-      {perPage < prodF.length && (
-        <Pagi total={total} current={current} onChangePage={onChangePage} />
-      )}
+        {perPage < prodCat.length && (
+          <Pagi total={total} current={current} onChangePage={onChangePage} />
+        )}
+      </Container>
     </>
   );
 }

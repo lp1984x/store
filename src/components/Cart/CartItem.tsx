@@ -1,6 +1,5 @@
 import React from "react";
 import { IProd } from "../../models";
-import * as icon from "react-bootstrap-icons";
 import "./cartItem.scss";
 import { useAppDispatch } from "../../store/store";
 import {
@@ -31,6 +30,7 @@ export default function CartItem({ prd }: CartProps) {
         <ButtonGroup aria-label="Basic example" size="sm">
           <Button
             variant="outline-light"
+            className="text-secondary"
             onClick={() => dispatch(decrementQuantity(prd))}
           >
             -
@@ -41,6 +41,7 @@ export default function CartItem({ prd }: CartProps) {
 
           <Button
             variant="outline-light"
+            className="text-secondary"
             onClick={() => dispatch(incrementQuantity(prd))}
           >
             +

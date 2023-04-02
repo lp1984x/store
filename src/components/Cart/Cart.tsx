@@ -4,6 +4,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { handleHide } from "../../store/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import CartItem from "./CartItem";
+import { IProd } from "../../models";
 
 export default function Cart() {
   const dispatch = useAppDispatch();
@@ -34,7 +35,7 @@ export default function Cart() {
                 </tr>
               </thead>
               <tbody>
-                {filling.map((item) => (
+                {filling.map((item: IProd) => (
                   <CartItem key={item.id} prd={item} />
                 ))}
               </tbody>
