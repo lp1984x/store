@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useLocation } from "react-router-dom"
 import { IData, IProd} from '../models'
 
 
@@ -8,13 +7,7 @@ import { IData, IProd} from '../models'
 
 export  function useFetchData() {
     const [prod, setProd]=useState<IProd[]>([])
-    /* const [data, setData]= useState<IData>({
-        limit:0,
-        products: [],
-        skip: 0,
-        total: 0
-    }) */
-    const [cat, setCat] = useState<[string]>([""])
+    const [cat, setCat] = useState<string[]>([])
     const [loading, setLoading] = useState(false)
     
 
@@ -52,5 +45,5 @@ export  function useFetchData() {
        
     },[])
    
-return {cat, prod, loading, setProd}
+return {cat, prod, loading}
 }

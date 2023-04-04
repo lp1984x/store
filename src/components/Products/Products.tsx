@@ -6,7 +6,7 @@ import Pagi from "../Pagi/Pagi";
 import Product from "../Product/Product";
 
 export default function Products() {
-  const catF = useAppSelector((state) => state.cat.value);
+  const catF = useAppSelector((state) => state.cat.catValue);
   const [current, setCurrent] = useState(1);
   const [perPage] = useState(6);
   const { loading, prod } = useFetchData();
@@ -23,7 +23,7 @@ export default function Products() {
 
   return (
     <>
-      <Container className="d-flex flex-wrap justify-content-center p-0 col-10">
+      <Container className="d-flex flex-wrap justify-content-center p-0 col-sm-12 col-lg-10">
         {loading && <Spinner animation="border" />}
         {currentProds.map((item) => (
           <Product prd={item} key={item.id} />

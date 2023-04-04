@@ -18,12 +18,12 @@ export default function CartItem({ prd }: CartProps) {
 
   return (
     <tr className="text-center align-middle">
-      <td className="">
+      <td className="d-flex align-items-center">
         <CloseButton
           className="m-1 float-start align-middle"
           onClick={() => dispatch(delFromCart(prd))}
         />
-        <img src={prd.images[0]} className="float-start w-25" alt="card" />
+        <img src={prd.images[0]} className="float-start w-25 px-2" alt="card" />
         <div>{prd.title}</div>
       </td>
       <td>

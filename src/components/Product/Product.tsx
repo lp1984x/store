@@ -14,7 +14,7 @@ export default function Product({ prd }: ProdProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <Card className="shadow col-3 m-3 border-0 float-start">
+    <Card className="shadow col-12 col-sm-6 col-md-4 col-lg-3 m-3 border-0 float-start">
       <Link to="single">
         <Card.Img
           variant="top"

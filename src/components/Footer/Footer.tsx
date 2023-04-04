@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <Navbar className="py-5 bg-dark">
       <Container className="text-center text-white d-flex justify-content-center">
-        Copyright &copy; Your Website 2022
+        Copyright &copy; lp84 2022
       </Container>
     </Navbar>
   );
