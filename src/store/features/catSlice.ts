@@ -17,7 +17,7 @@ const setItem = <T>(item:T)=>{
 export const CatSlice = createSlice({
     name:"category",
     initialState:{
-        catValue: catStore ? JSON.parse(catStore) : "[]",
+        catValue: catStore ? JSON.parse(catStore) : "",
       },
     reducers:{
         addCat:(state,action:PayloadAction<{category:string}>)=>{
@@ -28,4 +28,4 @@ export const CatSlice = createSlice({
 })
 
 export default CatSlice.reducer;
-export const { addCat} = CatSlice.actions
+export const { addCat } = CatSlice.actions

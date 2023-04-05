@@ -13,7 +13,7 @@ export default function NavBar() {
   return (
     <Navbar bg="light" expand="lg" className="sticky-top">
       <Container>
-        <Navbar.Brand href="#home">Shop in style</Navbar.Brand>
+        <Navbar.Brand href="/">Shop in style</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">

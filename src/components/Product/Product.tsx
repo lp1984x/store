@@ -14,17 +14,18 @@ export default function Product({ prd }: ProdProps) {
   const dispatch = useAppDispatch();
 
   return (
-    <Card className="shadow col-12 col-sm-6 col-md-4 col-lg-3 m-3 border-0 float-start">
+    <Card className="shadow col-10 col-sm-8 col-md-5 col-lg-4 col-xl-3 m-3 border-0 float-start">
       <Link to="single">
         <Card.Img
           variant="top"
           src={prd.images[0]}
-          className="thumbnail"
+          width={100}
+          height={250}
           onClick={() => dispatch(singleData(prd))}
         />
       </Link>
       <Card.Body>
-        <Link to="single" className="text-decoration-none">
+        <Link to="single" className="text-decoration-none text-dark">
           <Card.Title onClick={() => dispatch(singleData(prd))}>
             {prd.title}
           </Card.Title>
@@ -35,7 +36,7 @@ export default function Product({ prd }: ProdProps) {
       <Card.Title className="m-3">Price: {prd.price}$</Card.Title>
       <Button
         className="w-50 m-3"
-        variant="primary"
+        variant="dark"
         onClick={() => {
           dispatch(addToCart(prd));
         }}

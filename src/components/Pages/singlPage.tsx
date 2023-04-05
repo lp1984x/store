@@ -12,7 +12,7 @@ export default function SinglPage() {
   return (
     <Card className="border-0">
       <Row className="d-flex justify-content-center">
-        <Col className="col-5">
+        <Col className="col-8 col-lg-6">
           <Carousel>
             <Carousel.Item>
               <img
@@ -42,7 +42,7 @@ export default function SinglPage() {
             )}
           </Carousel>
         </Col>
-        <Col className="col-5">
+        <Col className="col-8 col-lg-6">
           <Card.Body>
             <Card.Title>
               {single.brand}: {single.title}

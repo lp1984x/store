@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useFetchData } from "../../api/fetch";
 import { useAppSelector } from "../../store/store";
-import Pagi from "../Pagi/Pagi";
 import Product from "../Product/Product";
+import Pagination from "@mui/material/Pagination";
 
 export default function Products() {
-  const catF = useAppSelector((state) => state.cat.catValue);
   const [current, setCurrent] = useState(1);
   const [perPage] = useState(6);
   const { loading, prod } = useFetchData();
+  const catF = useAppSelector((state) => state.cat.catValue);
   const prodCat =
     catF.trim().length > 0
       ? prod.filter((item) => item.category === catF)
@@ -19,7 +19,8 @@ export default function Products() {
   const currentProds = prodCat.slice(firstIndex, lastIndex);
   const total = Math.ceil(prodCat.length / perPage);
 
-  const onChangePage = (page: number) => setCurrent(page);
+  const onChangePage = (event: React.ChangeEvent<unknown>, page: number) =>
+    setCurrent(page);
 
   return (
     <>
@@ -28,10 +29,17 @@ export default function Products() {
         {currentProds.map((item) => (
           <Product prd={item} key={item.id} />
         ))}
-
-        {perPage < prodCat.length && (
-          <Pagi total={total} current={current} onChangePage={onChangePage} />
-        )}
+        <Container className="d-flex justify-content-center my-5">
+          {perPage < prodCat.length && (
+            <Pagination
+              size="small"
+              count={total}
+              page={current}
+              onChange={onChangePage}
+              shape="rounded"
+            />
+          )}
+        </Container>
       </Container>
     </>
   );
