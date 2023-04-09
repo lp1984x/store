@@ -7,6 +7,7 @@ import { Container } from "react-bootstrap";
 import About from "./components/Pages/About";
 import SinglPage from "./components/Pages/singlPage";
 import Cart from "./components/Cart/Cart";
+import Mdl from "./components/Mdl/Mdl";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/single" element={<SinglPage />} />
         </Routes>
         <Cart />
+        <Mdl />
       </Container>
       <Footer />
     </>

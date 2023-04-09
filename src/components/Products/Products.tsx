@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useFetchData } from "../../api/fetch";
-import { useAppSelector } from "../../store/store";
+import { useAppDispatch, useAppSelector } from "../../store/store";
 import Product from "../Product/Product";
 import Pagination from "@mui/material/Pagination";
+import { setCurrent } from "../../store/features/pageSlice";
 
 export default function Products() {
-  const [current, setCurrent] = useState(1);
+  const dispatch = useAppDispatch();
+  const current = useAppSelector((state) => state.page.current);
   const [perPage] = useState(6);
   const { loading, prod } = useFetchData();
   const catF = useAppSelector((state) => state.cat.catValue);
@@ -20,7 +22,7 @@ export default function Products() {
   const total = Math.ceil(prodCat.length / perPage);
 
   const onChangePage = (event: React.ChangeEvent<unknown>, page: number) =>
-    setCurrent(page);
+    dispatch(setCurrent(page));
 
   return (
     <>

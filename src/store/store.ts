@@ -4,13 +4,17 @@ import { useSelector, useDispatch} from 'react-redux';
 import { CartSlice } from './features/cartSlice';
 import { CatSlice } from './features/catSlice'
 import { SingleSlice } from './features/singleSlice';
+import { PageSlice } from './features/pageSlice';
+import { MdlSlice } from './features/mdlSlice';
 
 
 export const store = configureStore({
   reducer: {
     cat:CatSlice.reducer,
     cart:CartSlice.reducer,
-    single:SingleSlice.reducer
+    single:SingleSlice.reducer,
+    page:PageSlice.reducer,
+    mdl:MdlSlice.reducer
     
   },
   

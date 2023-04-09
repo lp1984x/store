@@ -5,6 +5,7 @@ import CartIcon from "../Cart/CartIcon";
 import { addCat } from "../../store/features/catSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useFetchData } from "../../api/fetch";
+import { setCurrent } from "../../store/features/pageSlice";
 
 export default function NavBar() {
   const { cat } = useFetchData();
@@ -40,7 +41,10 @@ export default function NavBar() {
                 <NavDropdown.Item
                   key={i}
                   className="link-secondary"
-                  onClick={() => dispatch(addCat({ category: categorie }))}
+                  onClick={() => {
+                    dispatch(addCat({ category: categorie }));
+                    dispatch(setCurrent(1));
+                  }}
                   eventKey={categorie}
                 >
                   {categorie}

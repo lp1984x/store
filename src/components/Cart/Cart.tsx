@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { handleHide } from "../../store/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import CartItem from "./CartItem";
 import { IProd } from "../../models";
+import { handlShow } from "../../store/features/mdlSlice";
 
 export default function Cart() {
   const dispatch = useAppDispatch();
@@ -42,10 +43,11 @@ export default function Cart() {
             </Table>
           </Offcanvas.Body>
 
-          <Container className="mb-5">
-            <Offcanvas.Title className="text-center">
-              Total Price: {totalPrice}$
-            </Offcanvas.Title>
+          <Container className="px-4 mb-5 d-flex align-items-center justify-content-between">
+            <Button variant="dark" onClick={() => dispatch(handlShow())}>
+              Buy
+            </Button>
+            <Offcanvas.Title>Total Price: {totalPrice}$</Offcanvas.Title>
           </Container>
         </>
       ) : null}
