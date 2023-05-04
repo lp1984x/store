@@ -2,14 +2,15 @@ import React from "react";
 import { Container, Nav, NavDropdown, NavItem, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CartIcon from "../Cart/CartIcon";
-import { addCat } from "../../store/features/catSlice";
+import { sort } from "../../store/features/sortSlice";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import { useFetchData } from "../../api/fetch";
 import { setCurrent } from "../../store/features/pageSlice";
+import Search from "../Search/Search";
 
 export default function NavBar() {
   const { cat } = useFetchData();
-  const catF = useAppSelector((state) => state.cat.catValue);
+  const catF = useAppSelector((state) => state.cat.sortValue);
   const dispatch = useAppDispatch();
   return (
     <Navbar bg="light" expand="lg" className="sticky-top">
@@ -31,10 +32,7 @@ export default function NavBar() {
               activekey={catF}
               className="d-lg-none"
             >
-              <NavDropdown.Item
-                eventKey=""
-                onClick={() => dispatch(addCat({ category: "" }))}
-              >
+              <NavDropdown.Item eventKey="" onClick={() => dispatch(sort(""))}>
                 All
               </NavDropdown.Item>
               {cat.map((categorie, i) => (
@@ -42,7 +40,7 @@ export default function NavBar() {
                   key={i}
                   className="link-secondary"
                   onClick={() => {
-                    dispatch(addCat({ category: categorie }));
+                    dispatch(sort(categorie));
                     dispatch(setCurrent(1));
                   }}
                   eventKey={categorie}
@@ -53,6 +51,9 @@ export default function NavBar() {
               <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Nav.Item>
+            <Search />
+          </Nav.Item>
           <Nav.Item>
             <CartIcon />
           </Nav.Item>

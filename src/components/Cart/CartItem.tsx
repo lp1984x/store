@@ -1,6 +1,5 @@
 import React from "react";
 import { IProd } from "../../models";
-import "./cartItem.scss";
 import { useAppDispatch } from "../../store/store";
 import {
   decrementQuantity,

@@ -11,15 +11,10 @@ export default function Products() {
   const current = useAppSelector((state) => state.page.current);
   const [perPage] = useState(6);
   const { loading, prod } = useFetchData();
-  const catF = useAppSelector((state) => state.cat.catValue);
-  const prodCat =
-    catF.trim().length > 0
-      ? prod.filter((item) => item.category === catF)
-      : prod;
   const lastIndex = current * perPage;
   const firstIndex = lastIndex - perPage;
-  const currentProds = prodCat.slice(firstIndex, lastIndex);
-  const total = Math.ceil(prodCat.length / perPage);
+  const currentProds = prod.slice(firstIndex, lastIndex);
+  const total = Math.ceil(prod.length / perPage);
 
   const onChangePage = (event: React.ChangeEvent<unknown>, page: number) =>
     dispatch(setCurrent(page));
@@ -32,7 +27,7 @@ export default function Products() {
           <Product prd={item} key={item.id} />
         ))}
         <Container className="d-flex justify-content-center my-5">
-          {perPage < prodCat.length && (
+          {perPage < prod.length && (
             <Pagination
               size="small"
               count={total}

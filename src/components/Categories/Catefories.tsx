@@ -1,6 +1,6 @@
 import React from "react";
 import { Nav } from "react-bootstrap";
-import { addCat } from "../../store/features/catSlice";
+import { sort } from "../../store/features/sortSlice";
 import { useAppDispatch } from "../../store/store";
 import { useFetchData } from "../../api/fetch";
 import { setCurrent } from "../../store/features/pageSlice";
@@ -18,7 +18,7 @@ export default function Catefories() {
       <Nav.Item>
         <Nav.Link
           className="link-secondary"
-          onClick={() => dispatch(addCat({ category: "" }))}
+          onClick={() => dispatch(sort(""))}
           eventKey="all"
         >
           All
@@ -29,7 +29,7 @@ export default function Catefories() {
           <Nav.Link
             className="link-secondary"
             onClick={() => {
-              dispatch(addCat({ category: categorie }));
+              dispatch(sort("/category/" + categorie));
               dispatch(setCurrent(1));
             }}
             eventKey={categorie}
