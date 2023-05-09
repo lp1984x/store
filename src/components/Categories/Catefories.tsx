@@ -11,30 +11,24 @@ export default function Catefories() {
   return (
     <Nav
       defaultActiveKey="all"
-      className="flex-column d-none d-lg-inline-block"
-      variant="tabs"
+      className="flex-column d-none d-lg-inline-block "
     >
       <h5 className="text-center ">Categories</h5>
       <Nav.Item>
-        <Nav.Link
-          className="link-secondary"
-          onClick={() => dispatch(sort(""))}
-          eventKey="all"
-        >
+        <Nav.Link onClick={() => dispatch(sort(""))} eventKey="all">
           All
         </Nav.Link>
       </Nav.Item>
       {cat.map((categorie, i) => (
         <Nav.Item key={i}>
           <Nav.Link
-            className="link-secondary"
             onClick={() => {
               dispatch(sort("/category/" + categorie));
               dispatch(setCurrent(1));
             }}
             eventKey={categorie}
           >
-            {categorie}{" "}
+            {categorie}
           </Nav.Link>
         </Nav.Item>
       ))}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Spinner } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useFetchData } from "../../api/fetch";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import Product from "../Product/Product";
@@ -10,7 +10,7 @@ export default function Products() {
   const dispatch = useAppDispatch();
   const current = useAppSelector((state) => state.page.current);
   const [perPage] = useState(6);
-  const { loading, prod } = useFetchData();
+  const { prod } = useFetchData();
   const lastIndex = current * perPage;
   const firstIndex = lastIndex - perPage;
   const currentProds = prod.slice(firstIndex, lastIndex);
@@ -22,7 +22,6 @@ export default function Products() {
   return (
     <>
       <Container className="d-flex flex-wrap justify-content-center p-0 col-sm-12 col-lg-10">
-        {loading && <Spinner animation="border" />}
         {currentProds.map((item) => (
           <Product prd={item} key={item.id} />
         ))}

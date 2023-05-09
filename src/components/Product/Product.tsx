@@ -17,6 +17,7 @@ export default function Product({ prd }: ProdProps) {
     <Card className="shadow col-10 col-sm-8 col-md-5 col-lg-4 col-xl-3 m-3 border-0 float-start">
       <Link to="single">
         <Card.Img
+          style={{ objectFit: "scale-down" }}
           variant="top"
           src={prd.images[0]}
           width={100}
