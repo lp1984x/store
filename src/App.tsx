@@ -8,13 +8,14 @@ import About from "./components/Pages/About";
 import SinglPage from "./components/Pages/singlPage";
 import Cart from "./components/Cart/Cart";
 import Mdl from "./components/Mdl/Mdl";
+import "./app.scss";
 
 function App() {
   return (
     <>
       <NavBar />
       <Header />
-      <Container className="min-vh-100">
+      <Container className="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

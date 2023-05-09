@@ -1,0 +1,8 @@
+.content {
+  min-height: calc(100vh - 374px);
+}
+@media (max-width: 1000px) {
+  .content {
+    min-height: calc(100vh - 345px);
+  }
+}
