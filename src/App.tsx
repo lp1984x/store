@@ -12,7 +12,7 @@ import "./app.scss";
 
 function App() {
   return (
-    <>
+    <main className="wrapper">
       <NavBar />
       <Header />
       <Container className="content">
@@ -25,7 +25,7 @@ function App() {
         <Mdl />
       </Container>
       <Footer />
-    </>
+    </main>
   );
 }
 
